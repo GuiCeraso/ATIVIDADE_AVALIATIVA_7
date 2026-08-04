@@ -1,0 +1,55 @@
+dispositivos = []
+def cadastrar():
+     print("---CADASTRE O APARELHO---")
+     nome = input("Nome do aparelho: ")
+     ip = int(input("Digite o endereço IP: "))
+     verificacao = input("O dispositivo está Online ou Offline:")
+     dispositivos.append([nome,ip,verificacao])
+     print("\nAparelho cadastrado!")
+def listar():
+    if len(dispositivos) == 0:
+        print("Nenhum dispositivo cadastrado!")
+    else:
+        for dispositivo in dispositivos:
+            print("Nome:", dispositivo[0])
+            print("IP:", dispositivo[1])
+            print("Status:", dispositivo[2])
+def consultar():
+    nome = input("Digite o nome do dispositivo: ")
+    for dispositivo in dispositivos:
+        if dispositivo[0] == nome:
+            print("Nome:", dispositivo[0])
+            print("IP:", dispositivo[1])
+            print("Status:", dispositivo[2])
+            return
+    print("\nDispositivo não encontrado.")
+def estatisticas():
+    online = 0
+    offline = 0
+    for dispositivo in dispositivos:
+        if dispositivo [2] == "Online":
+            online +=1
+        else:
+            offline +=1
+    print("Dispositivos Online:", online)
+    print("Dispositivos Offline:", offline)
+while True:
+    print("\n1 - Cadastrar")
+    print("2 - Listar")
+    print("3 - Consultar")
+    print("4 - Estatísticas")
+    print("5 - Sair")
+    opcao = int(input("Escolha uma opção:"))
+    if opcao == 1:
+        cadastrar()
+    elif opcao == 2:
+        listar()
+    elif opcao == 3:
+        consultar()
+    elif opcao == 4:
+        estatisticas()
+    elif opcao == 5:
+        print ("Saindo!")
+        break
+    else:
+        print("Opção inválida!")
